@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  skill-server:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: sh -c "pip install -e . && uvicorn skill_server.app:app --host 0.0.0.0 --port 8010"
+    ports:
+      - "8010:8010"
+
+  api:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: sh -c "pip install -e . && uvicorn interview_ai.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - SKILL_SERVER_URL=http://skill-server:8010
+    depends_on:
+      - skill-server

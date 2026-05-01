@@ -1,0 +1,2 @@
+{"prompt": "How should I answer a system design interview question for URL shortener?", "expected_keywords": ["requirements", "trade-offs", "scalability"], "role": "Backend Engineer", "experience_years": 4, "topic_focus": ["system design", "distributed systems"]}
+{"prompt": "How do I explain Python API validation best practices?", "expected_keywords": ["validation", "pydantic", "edge"], "role": "Python Engineer", "experience_years": 2, "topic_focus": ["python", "apis"]}
