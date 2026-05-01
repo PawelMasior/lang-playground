@@ -124,10 +124,12 @@ def main() -> None:
                     )
             except httpx.HTTPError as exc:
                 st.error(f"Request failed: {exc}")
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": f"Request failed: {exc}",
-                })
+                st.session_state.messages.append(
+                    {
+                        "role": "assistant",
+                        "content": f"Request failed: {exc}",
+                    }
+                )
                 return
 
             st.markdown("### Answer")

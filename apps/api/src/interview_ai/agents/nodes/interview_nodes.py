@@ -83,7 +83,7 @@ def answer_generation_node(
     follow_start = raw.find("FOLLOW_UP:")
 
     if answer_start >= 0 and follow_start > answer_start:
-        answer = raw[answer_start + len("ANSWER:"):follow_start].strip()
+        answer = raw[answer_start + len("ANSWER:") : follow_start].strip()
     else:
         answer = raw.strip()
 
