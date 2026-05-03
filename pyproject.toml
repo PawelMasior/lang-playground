@@ -47,7 +47,7 @@ where = ["apps/api/src", "apps/skill_server/src", "packages/shared/src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["apps/api/src", "apps/skill_server/src", "packages/shared/src"]
+pythonpath = ["apps/api/src", "apps/skill_server/src", "packages/shared/src", "."]
 addopts = "-q --cov=interview_ai --cov=skill_server --cov-report=term-missing"
 
 [tool.ruff]
