@@ -65,6 +65,9 @@ async def stream_interview_agent(
         except ValueError as exc:
             yield _sse("error", {"detail": str(exc)})
             return
+        except Exception:  # pragma: no cover - defensive stream safety
+            yield _sse("error", {"detail": "Internal server error during streaming."})
+            return
 
         for chunk in _chunk_text(response.answer):
             yield _sse("answer_chunk", {"text": chunk})

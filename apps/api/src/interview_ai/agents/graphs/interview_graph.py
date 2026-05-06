@@ -55,6 +55,9 @@ class InterviewGraphRunner:
 
         return graph.compile()
 
+    def get_mermaid(self) -> str:
+        return self._graph.get_graph().draw_mermaid()
+
     async def run(self, initial_state: InterviewGraphState) -> InterviewGraphState:
         result = await self._graph.ainvoke(initial_state)
         return result

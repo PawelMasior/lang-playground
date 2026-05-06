@@ -26,6 +26,9 @@ class InterviewService:
             skill_call=self._skill_client.call,
         )
 
+    def get_graph_mermaid(self) -> str:
+        return self._graph.get_mermaid()
+
     def _invoke_llm(self, messages) -> str:
         response = self._llm_model.invoke(messages)
         return response.content if isinstance(response.content, str) else str(response.content)

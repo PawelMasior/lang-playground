@@ -73,15 +73,26 @@ def main() -> None:
     if not user_text:
         return
 
-    st.session_state.messages.append({"role": "user", "content": user_text})
+    trimmed_text = user_text.strip()
+    if len(trimmed_text) < 3:
+        st.warning("Message must be at least 3 characters long.")
+        return
+
+    if experience_years == 0 and any(topic.strip().lower() == "system design" for topic in topics):
+        st.warning(
+            "For 0 years of experience, remove 'system design' from topics or increase experience."
+        )
+        return
+
+    st.session_state.messages.append({"role": "user", "content": trimmed_text})
     with st.chat_message("user"):
-        st.markdown(user_text)
+        st.markdown(trimmed_text)
 
     payload = {
         "role": role,
         "experience_years": experience_years,
         "topic_focus": topics,
-        "user_message": user_text,
+        "user_message": trimmed_text,
         "session_id": st.session_state.chat_session_id,
     }
 
